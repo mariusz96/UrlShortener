@@ -74,6 +74,6 @@ public static class ShortUrlValidator
             validationResultsList.Add("Path can only contain alphanumeric characters, underscores, and dashes.");
         
         validationResults = validationResultsList.ToArray();
-        return validationResultsList.Count > 0;
+        return validationResultsList.Count == 0;
     }
 }

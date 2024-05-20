@@ -16,8 +16,8 @@ app.MapGet("/{path}", async (
     ShortUrlRepository shortUrlRepository
 ) =>
 {
-    if(ShortUrlValidator.ValidatePath(path, out _))
-        return Results.BadRequest();
+    if (!ShortUrlValidator.ValidatePath(path, out var validationResults))
+        return Results.BadRequest(validationResults);
 
     var shortUrl = await shortUrlRepository.Get(path);
     if (shortUrl == null || string.IsNullOrEmpty(shortUrl.Destination))
